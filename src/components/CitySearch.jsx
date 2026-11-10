@@ -14,7 +14,7 @@ function CitySearch({ onPlaceFound }) {
             return
         }
 
-        setMessage('')
+        setMessage('Søger...')
 
         const url = new URL(import.meta.env.VITE_GEOCODING_URL)
         url.searchParams.set('q', `${city},DK`)
@@ -36,6 +36,7 @@ function CitySearch({ onPlaceFound }) {
                 return
             }
 
+            setMessage('')
             onPlaceFound(places[0])
         } catch (error){
             console.error(error)

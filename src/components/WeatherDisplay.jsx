@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 function WeatherDisplay({place}) {
     const [weather, setWeather] = useState(null)
+    const [errorMessage, setErrorMessage] = useState('')
 
     useEffect(() => {
         async function fetchWeather() {
@@ -12,16 +13,31 @@ function WeatherDisplay({place}) {
             url.searchParams.set('lang', 'da')
             url.searchParams.set('appid', import.meta.env.VITE_API_KEY)
 
-            const response = await fetch(url)
-            const data = await response.json()
-            setWeather(data)
+            try {
+                const response = await fetch(url)
+
+                if (!response.ok) {
+                    setErrorMessage('Kunne ikke hente vejret. Prøv igen senere.')
+                    return
+                }
+
+                const data = await response.json()
+                setWeather(data)
+            } catch(error) {
+                console.error(error)
+                setErrorMessage('Netværksfejl. Kunne ikke hente vejret.')
+            }
         }
 
         fetchWeather()
     }, [place])
 
+    if (errorMessage) {
+        return <p>{errorMessage}</p>
+    }
+
     if (!weather) {
-        return null
+        return <p>Henter vejret...</p>
     }
 
     return (

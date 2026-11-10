@@ -9,7 +9,7 @@ function WeatherPage() {
         <main>
             <h1>Vejr-app</h1>
             <CitySearch onPlaceFound={setPlace} />
-            {place && <WeatherDisplay place={place}/>}
+            {place && <WeatherDisplay key={`${place.lat},${place.lon}`} place={place} />}
 
         </main>
     )
