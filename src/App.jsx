@@ -1,5 +1,8 @@
+import WeatherPage from "./components/WeatherPage"
+
 function App() {
-    return <h1>Vejr-app</h1>
+    return <WeatherPage />
+    
 }
 
 export default App
