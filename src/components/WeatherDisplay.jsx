@@ -33,18 +33,18 @@ function WeatherDisplay({place}) {
     }, [place])
 
     if (errorMessage) {
-        return <p>{errorMessage}</p>
+        return <p className="message">{errorMessage}</p>
     }
 
     if (!weather) {
-        return <p>Henter vejret...</p>
+        return <p className="message">Henter vejret...</p>
     }
 
     return (
-        <section>
+        <section className="weather-card">
             <h2>{place.name}</h2>
-            <p>{Math.round(weather.main.temp)}°C</p>
-            <p>{weather.weather[0].description}</p>
+            <p className="temp">{Math.round(weather.main.temp)}°C</p>
+            <p className="description">{weather.weather[0].description}</p>
         </section>
     )
 }

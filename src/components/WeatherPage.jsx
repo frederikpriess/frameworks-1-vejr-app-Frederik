@@ -6,8 +6,9 @@ function WeatherPage() {
     const [place, setPlace] = useState(null)
     
     return (
-        <main>
-            <h1>Vejr-app</h1>
+        <main className="page">
+            <h1>Hvordan er vejret?</h1>
+            <p className="subtitle">Søg efter en by, og få det aktuelle vejr.</p>
             <CitySearch onPlaceFound={setPlace} />
             {place && <WeatherDisplay key={`${place.lat},${place.lon}`} place={place} />}
 

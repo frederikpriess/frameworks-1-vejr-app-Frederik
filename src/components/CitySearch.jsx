@@ -45,10 +45,10 @@ function CitySearch({ onPlaceFound }) {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="search" onSubmit={handleSubmit}>
             <input name="city" placeholder="Skriv en by, fx København" />
             <button type="submit">Søg vejr</button>
-            {message && <p>{message}</p>}
+            {message && <p className="message">{message}</p>}
         </form>
     )
 }
