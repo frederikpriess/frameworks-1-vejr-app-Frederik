@@ -1,5 +1,6 @@
 import { useState } from "react"
 import CitySearch from "./CitySearch"
+import WeatherDisplay from "./WeatherDisplay"
 
 function WeatherPage() {
     const [place, setPlace] = useState(null)
@@ -8,7 +9,7 @@ function WeatherPage() {
         <main>
             <h1>Vejr-app</h1>
             <CitySearch onPlaceFound={setPlace} />
-            {place && <p>{place.name}: {place.lat}, {place.lon}</p>}
+            {place && <WeatherDisplay place={place}/>}
 
         </main>
     )
